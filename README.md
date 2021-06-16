@@ -4,7 +4,7 @@
 
 ## JeffQL :rocket:
 
-> Note : This is one of my learning path project on how i can code GraphQL in different environments ex. Django | Flask | FastAPI :love:
+> Note : This is one of my learning path project on how i can code GraphQL in different environments ex. Django | Flask | FastAPI :heart:
 
 > I choose this Name JeffQL cause i have a Low level Friend with a Nickname Jeff i wish he understand that Python and JavaScript is the future :rocket:
 
