@@ -10,11 +10,7 @@ COPY services /app/services
 COPY config.py /app/config.py
 COPY main.py /app/main.py
 
-RUN \
-    apk add --no-cache python3 && \
-    apk add --no-cache --virtual .build-deps gcc python3-dev &&\
-    python3 -m pip install -r requirements.txt --no-cache-dir && \
-    apk --purge del .build-deps
+RUN python3 -m pip install -r requirements.txt
 
 EXPOSE 80
 
