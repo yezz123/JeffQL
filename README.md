@@ -4,9 +4,9 @@
 
 ## JeffQL :rocket:
 
-> Note : This is one of my learning path project on how i can code GraphQL in different environments ex. Django | Flask | FastAPI :heart:
+> Note : Note : This is one of my learning path projects about how coding GraphQL in different environments ex. Django | Flask | FastAPI :heart:
 
-> I choose this Name JeffQL cause i have a Low level Friend with a Nickname Jeff i wish he understand that Python and JavaScript is the future :rocket:
+> I chose the name JeffQL as I have a low level friend goes by the nickname Jeff and  I wish would understand that Python and JavaScript are the future :rocket:
 
 - A Simple fastAPI authentication & Login API using GraphQL and JWT.
 
@@ -22,7 +22,7 @@
 git clone https://github.com/yezz123/JeffQL
 ```
 
-- I prefer to create a virtual env to work in a good way :
+- I prefer creating a virtual env to facilitate my workflow :
 
 ```sh
 sudo pip3 install virtualenv
@@ -47,7 +47,7 @@ import main
 uvicorn.run(main.app, host="0.0.0.0", port=8080)
 ```
 
-- After running the file you can start now trying some Queries and mutations :rocket:.
+- After running the `start.py`, you can start now trying some Queries and mutations :rocket:.
 
 ## Resources :rocket:
 
