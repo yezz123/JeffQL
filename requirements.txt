@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+graphene
+fastapi-jwt-auth
+graphene-pydantic==0.2.0
