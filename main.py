@@ -8,7 +8,6 @@ from resolvers import user, login
 from auth import auth_bearer
 
 
-
 class Query(ObjectType):
     me = Field(user.UserProfileQuery, lan=String(default_value="en"))
 
@@ -33,8 +32,10 @@ async def graphiql(request: Request):
     request._url = URL('/data')
     return await graphql_app.handle_graphiql(request=request)
 
+
 @app.post('/data')
-async def graphql(request: Request, authorize: str = Depends(auth_bearer.JWTBearer())):
+async def graphql(request: Request,
+                  authorize: str = Depends(auth_bearer.JWTBearer())):
     request.state.authorize = authorize
     return await graphql_app.handle_graphql(request=request)
 
