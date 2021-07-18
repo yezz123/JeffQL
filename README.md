@@ -1,62 +1,105 @@
-<p align="center"> 
-    <img src="https://github.com/yezz123/yezz123/blob/master/img/school-of-athens.jpg" alt="School of Athena">
-</p>
+![JeffQL](.github/header.svg)
 
-## JeffQL :rocket:
+# JeffQL
 
-> Note : Note : This is one of my learning path projects about how coding GraphQL in different environments ex. Django | Flask | FastAPI :heart:
+A Simple fastAPI authentication & Login API using GraphQL and JWT.
 
-> I chose the name JeffQL as I have a low level friend goes by the nickname Jeff and  I wish would understand that Python and JavaScript are the future :rocket:
+## Getting Started
 
-- A Simple fastAPI authentication & Login API using GraphQL and JWT.
+### Prerequisites
 
-- Using `Graphene-Python` a library for building GraphQL APIs in Python easily, its main goal is to provide a simple but extendable API for making developers’ lives easier.
+- Python 3.8.6 or higher
+- FastAPI
+- Docker
 
-- Using `fastapi-jwt-auth` a FastAPI extension that provides JWT Auth support.
-
-## Get Started :rocket:
-
-- Clone the Repository into your local Machine :
+### Project setup
 
 ```sh
-git clone https://github.com/yezz123/JeffQL
+# clone the repo
+$ git clone https://github.com/yezz123/JeffQL
+
+# move to the project folder
+$ cd JeffQL
 ```
 
-- I prefer creating a virtual env to facilitate my workflow :
+### Creating virtual environment
+
+- Install `pipenv` a global python project `pip install pipenv`
+- Create a `virtual environment` for this project
+
+```shell
+# creating pipenv environment for python 3
+$ pipenv --three
+
+# activating the pipenv environment
+$ pipenv shell
+
+# if you have multiple python 3 versions installed then
+$ pipenv install -d --python 3.8
+
+# install all dependencies (include -d for installing dev dependencies)
+$ pipenv install -d
+```
+
+### Running the Application
+
+- To run the [Main](main.py) we need to use [uvicorn](https://www.uvicorn.org/) a lightning-fast ASGI server implementation, using uvloop and httptools.
 
 ```sh
-sudo pip3 install virtualenv
+# Running the application using uvicorn
+$ uvicorn main:app
 
-virtualenv venv
-
-source venv/bin/activate
+## To run the Application under a reload enviromment use -- reload
+$ uvicorn main:app --reload
 ```
 
-- Then Try to install the requirements :
+## Running the Docker Container
+
+- We have the Dockerfile created in above section. Now, we will use the Dockerfile to create the image of the FastAPI app and then start the FastAPI app container.
 
 ```sh
-pip install -r requirements.txt
+$ docker build
 ```
 
-- Now you can run the `main.py` using `uvicorn`, or use the file pre-created `start.py` :
+- list all the docker images and you can also see the image `jeffql:latest` in the list.
 
-```py
-import uvicorn
-import main
-
-uvicorn.run(main.app, host="0.0.0.0", port=8080)
+```sh
+$ docker images
 ```
 
-- After running the `start.py`, you can start now trying some Queries and mutations :rocket:.
+- run the application at port 5000. The various options used are:
 
-## Resources :rocket:
+> - `-p`: publish the container's port to the host port.
+> - `-d`: run the container in the background.
+> - `-i`: run the container in interactive mode.
+> - `-t`: to allocate pseudo-TTY.
+> - `--name`: name of the container
 
-- [GraphQL](https://fastapi.tiangolo.com/advanced/graphql/)
+```sh
+$ docker container run -p 5000:5000 -dit --name JeffQL jeffql:latest
+```
 
-- [Getting started with GraphQL in Python with FastAPI and Graphene](https://itnext.io/getting-started-with-graphql-in-python-with-fastapi-and-graphene-abb4f3eb04f4)
+- Check the status of the docker container
 
-- [Developing an API with FastAPI and GraphQL](https://testdriven.io/blog/fastapi-graphql/)
+```sh
+$ docker container ps
+```
 
-- [OAuth2 with Password (and hashing), Bearer with JWT tokens](https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/)
+## Preconfigured Packages
 
-- [FastAPI JWT Auth](https://indominusbyte.github.io/fastapi-jwt-auth/)
+Includes preconfigured packages to kick start JeffQL by just setting appropriate configuration.
+
+| Package                                                      | Usage                                                                        |
+| ------------------------------------------------------------ | -----------------------------------------------------------------------------|
+| [uvicorn](https://www.uvicorn.org/)                          | a lightning-fast ASGI server implementation, using uvloop and httptools.     |
+| [graphene-python](https://graphene-python.org/)              | a library for building GraphQL APIs in Python easily.                        |
+| [PyJWT](https://pyjwt.readthedocs.io/en/stable/)             | a Python library which allows you to encode and decode JSON Web Tokens (JWT).|
+| [starlette](https://www.starlette.io/)                       | a lightweight ASGI framework/toolkit, which is ideal for building high performance asyncio services. |
+
+## Contributing
+
+- Join the JeffQL Creator and Contribute to the Project if you have any enhancement or add-ons to create a good and Secure Project, Help any User to Use it in a good and simple way.
+
+## License
+
+This project is licensed under the terms of the MIT license.
