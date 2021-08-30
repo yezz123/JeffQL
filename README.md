@@ -2,7 +2,7 @@
 
 # JeffQL
 
-A Simple fastAPI authentication & Login API using GraphQL and JWT.
+A Simple FastAPI authentication & Login API using GraphQL and JWT.
 
 ## Getting Started
 
