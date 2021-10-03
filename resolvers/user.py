@@ -9,13 +9,7 @@ class ProfileModel(pydantic.BaseModel):
 
 
 def GetUser(lan):
-    if lan == 'eng':
-        user = ProfileModel(name='Yasser', gender='Men')
-
-    else:
-        user = ProfileModel(name='Yasser', gender='Men')
-
-    return user
+    return ProfileModel(name="Yasser", gender="Men")
 
 
 class UserProfile(PydanticObjectType):

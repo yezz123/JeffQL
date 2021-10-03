@@ -1,11 +1,12 @@
-from fastapi import FastAPI, Depends, Request
-from starlette.graphql import GraphQLApp
+from fastapi import Depends, FastAPI, Request
+from graphene import Field, Mutation, ObjectType, Schema, String
 from starlette.datastructures import URL
-from graphene import ObjectType, Field, Schema, Mutation, String
+from starlette.graphql import GraphQLApp
+
+from auth import auth_bearer
 
 # locale imports:
-from resolvers import user, login
-from auth import auth_bearer
+from resolvers import login, user
 
 
 class Query(ObjectType):
@@ -20,26 +21,29 @@ class Mutation(ObjectType):
     login = login.UserLogin.Field()
 
 
-app = FastAPI()
+app = FastAPI(
+    title="JeffQL",
+    description="FastAPI authentication & Login API using GraphQL and JWT.",
+    version="1.0.0",
+)
 
-app.add_route('/', GraphQLApp(schema=Schema(query=Query, mutation=Mutation)))
+app.add_route("/", GraphQLApp(schema=Schema(query=Query, mutation=Mutation)))
 
 graphql_app = GraphQLApp(schema=Schema(query=Query))
 
 
-@app.get('/')
+@app.get("/")
 async def graphiql(request: Request):
-    request._url = URL('/data')
+    request._url = URL("/data")
     return await graphql_app.handle_graphiql(request=request)
 
 
-@app.post('/data')
-async def graphql(request: Request,
-                  authorize: str = Depends(auth_bearer.JWTBearer())):
+@app.post("/data")
+async def graphql(request: Request, authorize: str = Depends(auth_bearer.JWTBearer())):
     request.state.authorize = authorize
     return await graphql_app.handle_graphql(request=request)
 
 
-@app.post('/user', dependencies=[Depends(auth_bearer.JWTBearer())])
+@app.post("/user", dependencies=[Depends(auth_bearer.JWTBearer())])
 async def graphql(request: Request):
     return await graphql_app.handle_graphql(request=request)
