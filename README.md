@@ -4,6 +4,8 @@
 
 A Simple FastAPI authentication & Login API using GraphQL and JWT.
 
+> I choose this Name JeffQL cause i have a Low level Friend with a Nickname Jeff i wish he understand that Python and JavaScript is the future :rocket:
+
 ## Getting Started
 
 ### Prerequisites

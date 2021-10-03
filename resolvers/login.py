@@ -1,6 +1,7 @@
 import graphene
-from graphene_pydantic import PydanticInputObjectType, PydanticObjectType
 import pydantic
+from graphene_pydantic import PydanticInputObjectType, PydanticObjectType
+
 from services import user_service
 
 
@@ -13,7 +14,7 @@ class UserModel(pydantic.BaseModel):
 class UserInput(PydanticInputObjectType):
     class Meta:
         model = UserModel
-        exclude_fields = ('id', 'token')
+        exclude_fields = ("id", "token")
 
 
 class User(PydanticObjectType):
@@ -29,4 +30,4 @@ class UserLogin(graphene.Mutation):
 
     def mutate(self, info, user):
         data = user_service.user_login(user.name)
-        return User(id=data['id'], name=user.name, token=data['token'])
+        return User(id=data["id"], name=user.name, token=data["token"])
